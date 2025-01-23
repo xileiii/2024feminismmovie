@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2024年中国女性导演电影</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #ff6f61;
+            color: #fff;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .movie {
+            text-align: center;
+        }
+
+        .movie img {
+            width: 200px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .movie a {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .movie a:hover {
+            color: #ff6f61;
+        }
+
+        .movie-page {
+            padding: 20px;
+        }
+
+        .movie-page img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .chart-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        canvas {
+            max-width: 400px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>2024年中国女性导演电影</h1>
+    </header>
+
+    <div class="container">
+        <div class="movie">
+            <img src="images/hao_dongxi_poster.jpg" alt="好东西">
+            <a href="hao_dongxi.html">好东西</a>
+        </div>
+        <div class="movie">
+            <img src="images/chuzou_juexin_poster.jpg" alt="出走的决心">
+            <a href="chuzou_juexin.html">出走的决心</a>
+        </div>
+        <div class="movie">
+            <img src="images/rela_guntang_poster.jpg" alt="热辣滚烫">
+            <a href="rela_guntang.html">热辣滚烫</a>
+        </div>
+    </div>
+
+    <!-- JavaScript for charts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/wordcloud2.js"></script>
+</body>
+</html>
+
+<!-- Example of a movie page (hao_dongxi.html) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>好东西</title>
+</head>
+<body>
+    <div class="movie-page">
+        <img src="images/director_hao.jpg" alt="导演照片">
+        <h2>导演姓名：张三</h2>
+        <p>导演简介：张三是2024年崭露头角的女性导演，其作品充满人文关怀和细腻情感。</p>
+        <img src="images/hao_dongxi_poster.jpg" alt="好东西海报">
+        <h3>电影名称：好东西</h3>
+        <p>电影简介：《好东西》讲述了一段关于家庭与成长的感人故事。</p>
+
+        <div class="chart-container">
+            <canvas id="wordcloud"></canvas>
+            <canvas id="piechart"></canvas>
+        </div>
+    </div>
+
+    <script>
+        // Word Cloud Data
+        const wordcloudData = [
+            { text: "感人", weight: 10 },
+            { text: "深刻", weight: 8 },
+            { text: "温馨", weight: 7 },
+            { text: "精彩", weight: 5 },
+            { text: "动人", weight: 6 }
+        ];
+
+        WordCloud(document.getElementById('wordcloud'), {
+            list: wordcloudData.map(item => [item.text, item.weight]),
+            gridSize: 10,
+            weightFactor: 8,
+            color: '#ff6f61'
+        });
+
+        // Pie Chart Data
+        const ctx = document.getElementById('piechart').getContext('2d');
+        new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['好评', '一般', '差评'],
+                datasets: [{
+                    data: [70, 20, 10],
+                    backgroundColor: ['#ff6f61', '#f4a261', '#e76f51']
+                }]
+            }
+        });
+    </script>
+</body>
+</html>
