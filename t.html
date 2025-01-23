@@ -28,7 +28,7 @@
             display: flex;
             justify-content: space-around;
             align-items: flex-start;
-            padding: 20px;
+            padding: 40px 20px;
         }
 
         .movie {
@@ -41,13 +41,14 @@
             height: auto;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
         }
 
         .movie img.director {
             width: 100px;
             height: auto;
             border-radius: 50%;
-            margin-top: 10px;
+            margin: 20px 0;
         }
 
         .movie h3 {
@@ -58,10 +59,11 @@
 
         .movie p {
             cursor: pointer;
+            margin-bottom: 20px;
         }
 
         .chart-container {
-            margin-top: 20px;
+            margin-top: 30px;
         }
 
         .chart-container p {
@@ -71,12 +73,14 @@
 
         canvas {
             max-width: 100%;
+            margin-bottom: 20px;
         }
 
         .wordcloud-image {
             width: 100%;
             height: auto;
             margin-top: 20px;
+            margin-bottom: 20px;
         }
     </style>
 </head>
@@ -138,7 +142,7 @@
                     labels: ['力荐', '推荐', '还行', '较差', '很差'],
                     datasets: [{
                         data: data,
-                        backgroundColor: ['#ff6f61', '#f4a261', '#f7d794', '#82c4c3', '#d3d3d3']
+                        backgroundColor: ['#ff6f61', '#f4a261', '#f7d794', '#82c4c3', '#a0c4ff']
                     }]
                 }
             });
