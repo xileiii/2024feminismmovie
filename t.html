@@ -62,6 +62,12 @@
         canvas {
             max-width: 100%;
         }
+
+        .wordcloud-image {
+            width: 100%;
+            height: auto;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -78,7 +84,7 @@
 
             <div class="chart-container">
                 <canvas id="piechart-hao"></canvas>
-                <canvas id="wordcloud-hao"></canvas>
+                <img src="images/wordcloud_hao.jpg" alt="好东西词云图" class="wordcloud-image">
             </div>
         </div>
 
@@ -90,7 +96,7 @@
 
             <div class="chart-container">
                 <canvas id="piechart-chuzou"></canvas>
-                <canvas id="wordcloud-chuzou"></canvas>
+                <img src="images/wordcloud_chuzou.jpg" alt="出走的决心词云图" class="wordcloud-image">
             </div>
         </div>
 
@@ -102,71 +108,35 @@
 
             <div class="chart-container">
                 <canvas id="piechart-rela"></canvas>
-                <canvas id="wordcloud-rela"></canvas>
+                <img src="images/wordcloud_rela.jpg" alt="热辣滚烫词云图" class="wordcloud-image">
             </div>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/wordcloud2.js"></script>
     <script>
         function generatePieChart(ctx, data) {
             new Chart(ctx, {
                 type: 'pie',
                 data: {
-                    labels: ['好评', '一般', '差评'],
+                    labels: ['力荐', '推荐', '还行', '较差', '很差'],
                     datasets: [{
                         data: data,
-                        backgroundColor: ['#ff6f61', '#f4a261', '#e76f51']
+                        backgroundColor: ['#ff6f61', '#f4a261', '#f7d794', '#82c4c3', '#d3d3d3']
                     }]
                 }
             });
         }
 
-        function generateWordCloud(elementId, wordData) {
-            WordCloud(document.getElementById(elementId), {
-                list: wordData.map(item => [item.text, item.weight]),
-                gridSize: 10,
-                weightFactor: 8,
-                color: '#ff6f61'
-            });
-        }
-
         // Data for each movie
-        const dataHao = [70, 20, 10];
-        const dataChuzou = [60, 30, 10];
-        const dataRela = [50, 30, 20];
-
-        const wordDataHao = [
-            { text: "感人", weight: 10 },
-            { text: "深刻", weight: 8 },
-            { text: "温馨", weight: 7 },
-            { text: "精彩", weight: 5 },
-            { text: "动人", weight: 6 }
-        ];
-
-        const wordDataChuzou = [
-            { text: "勇敢", weight: 9 },
-            { text: "独立", weight: 7 },
-            { text: "感性", weight: 6 },
-            { text: "触动", weight: 5 }
-        ];
-
-        const wordDataRela = [
-            { text: "热血", weight: 8 },
-            { text: "青春", weight: 9 },
-            { text: "励志", weight: 7 },
-            { text: "动感", weight: 5 }
-        ];
+        const dataHao = [50, 30, 10, 5, 5];
+        const dataChuzou = [40, 35, 15, 5, 5];
+        const dataRela = [45, 25, 15, 10, 5];
 
         // Generate charts
         generatePieChart(document.getElementById('piechart-hao').getContext('2d'), dataHao);
         generatePieChart(document.getElementById('piechart-chuzou').getContext('2d'), dataChuzou);
         generatePieChart(document.getElementById('piechart-rela').getContext('2d'), dataRela);
-
-        generateWordCloud('wordcloud-hao', wordDataHao);
-        generateWordCloud('wordcloud-chuzou', wordDataChuzou);
-        generateWordCloud('wordcloud-rela', wordDataRela);
     </script>
 </body>
 </html>
