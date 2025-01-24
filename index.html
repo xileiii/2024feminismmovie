@@ -34,12 +34,13 @@
             margin-left: auto;
             margin-right: auto;
             margin-top: 60px; /* 与上方元素的间距 */
+            font-weight: bold;
         }
 
         .highlight-text {
             text-align: center;
             color: #cc503e; /* 较深的颜色 */
-            font-size: 1.1em; /* 字体稍大 */
+            font-size: 0.9em; 
             max-width: 80%;
             line-height: 1.5;
             margin-left: auto;
@@ -58,6 +59,10 @@
         .movie {
             text-align: center;
             width: 30%;
+            display: flex; /* 使用 Flexbox 布局 */
+            flex-direction: column; /* 设置垂直排列 */
+            align-items: center; /* 子元素水平居中 */
+            margin-bottom: 20px; /* 增加间距 */
         }
 
         .movie img.poster {
