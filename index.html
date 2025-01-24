@@ -191,4 +191,12 @@
 
         // Generate charts
         generatePieChart(document.getElementById('piechart-hao').getContext('2d'), dataHao);
-        generateBarChart(document.getElementById('barchart-hao').
+        generatePieChart(document.getElementById('piechart-chuzou').getContext('2d'), dataChuzou);
+        generatePieChart(document.getElementById('piechart-rela').getContext('2d'), dataRela);
+
+        function showInfo(type, title, content) {
+            alert((type === 'movie' ? '电影：' : '导演：') + title + '\n\n' + content);
+        }
+    </script>
+</body>
+</html>
