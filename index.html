@@ -189,3 +189,22 @@
         const barLabels = ['关键词1', '关键词2', '关键词3', '关键词4', '关键词5', '关键词6', '关键词7', '关键词8', '关键词9', '关键词10'];
         const barDataHao = [12, 9, 8, 7, 6, 5, 5, 4, 3, 2];
         const barDataChuzou = [15, 12, 10, 8, 7, 6, 5, 4, 3, 
+let barDataRela = [14, 11, 9, 8, 7, 5, 5, 4, 3, 1];
+
+        // Create Pie Charts
+        generatePieChart(document.getElementById('piechart-hao').getContext('2d'), dataHao);
+        generatePieChart(document.getElementById('piechart-chuzou').getContext('2d'), dataChuzou);
+        generatePieChart(document.getElementById('piechart-rela').getContext('2d'), dataRela);
+
+        // Create Bar Charts
+        generateBarChart(document.getElementById('barchart-hao').getContext('2d'), barLabels, barDataHao);
+        generateBarChart(document.getElementById('barchart-chuzou').getContext('2d'), barLabels, barDataChuzou);
+        generateBarChart(document.getElementById('barchart-rela').getContext('2d'), barLabels, barDataRela);
+
+        // Pop-up Info
+        function showInfo(type, name, description) {
+            alert(`${type === 'movie' ? '电影' : '导演'}：${name}\n\n简介：${description}`);
+        }
+    </script>
+</body>
+</html>
