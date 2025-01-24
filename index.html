@@ -15,7 +15,7 @@
 
         header {
             text-align: center;
-            padding: 60px 20px; /* 增加间距 */
+            padding: 40px 20px;
             background-color: #ffece6; /* 改为与背景一致 */
         }
 
@@ -44,14 +44,14 @@
             height: auto;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            margin-bottom: 50px; /* 增大海报和电影名称间距 */
+            margin-bottom: 30px;
         }
 
         .movie img.director {
             width: 100px;
             height: auto;
             border-radius: 50%;
-            margin-bottom: 60px; /* 增大图片和导演名称间距 */
+            margin: 40px 0;
         }
 
         .movie h3 {
@@ -62,7 +62,6 @@
 
         .movie p {
             cursor: pointer;
-            margin-top: 20px; /* 增大导演姓名上方间距 */
             margin-bottom: 40px;
         }
 
@@ -71,14 +70,13 @@
         }
 
         .chart-container p {
-            margin-top: 40px;
-            margin-bottom: 50px; /* 增大饼状图名称和条形图之间间距 */
+            margin: 30px 0 20px;
             font-weight: bold;
         }
 
         canvas {
             max-width: 100%;
-            margin-bottom: 60px; /* 增大条形图与词云图之间的间距 */
+            margin-bottom: 40px;
         }
 
         .wordcloud-image {
@@ -188,23 +186,9 @@
 
         const barLabels = ['关键词1', '关键词2', '关键词3', '关键词4', '关键词5', '关键词6', '关键词7', '关键词8', '关键词9', '关键词10'];
         const barDataHao = [12, 9, 8, 7, 6, 5, 5, 4, 3, 2];
-        const barDataChuzou = [15, 12, 10, 8, 7, 6, 5, 4, 3, 
-let barDataRela = [14, 11, 9, 8, 7, 5, 5, 4, 3, 1];
+        const barDataChuzou = [15, 12, 10, 8, 7, 6, 5, 4, 3, 2];
+        const barDataRela = [14, 11, 9, 8, 6, 6, 5, 4, 3, 2];
 
-        // Create Pie Charts
+        // Generate charts
         generatePieChart(document.getElementById('piechart-hao').getContext('2d'), dataHao);
-        generatePieChart(document.getElementById('piechart-chuzou').getContext('2d'), dataChuzou);
-        generatePieChart(document.getElementById('piechart-rela').getContext('2d'), dataRela);
-
-        // Create Bar Charts
-        generateBarChart(document.getElementById('barchart-hao').getContext('2d'), barLabels, barDataHao);
-        generateBarChart(document.getElementById('barchart-chuzou').getContext('2d'), barLabels, barDataChuzou);
-        generateBarChart(document.getElementById('barchart-rela').getContext('2d'), barLabels, barDataRela);
-
-        // Pop-up Info
-        function showInfo(type, name, description) {
-            alert(`${type === 'movie' ? '电影' : '导演'}：${name}\n\n简介：${description}`);
-        }
-    </script>
-</body>
-</html>
+        generateBarChart(document.getElementById('barchart-hao').
