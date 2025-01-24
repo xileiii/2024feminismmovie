@@ -24,6 +24,14 @@
             margin: 0;
         }
 
+
+        .subtext {
+    text-align: center; /* 横向居中 */
+    color: #ff866e; /* 比背景色深，但同色系 */
+    font-size: 0.9em; /* 字体大小稍小 */
+    margin-top: 20px; /* 与上方元素的间距 */
+        }
+
         .container {
             display: flex;
             justify-content: space-around;
@@ -87,6 +95,7 @@
 <body>
     <header>
         <h1>2024年中国女性导演电影</h1>
+        <p class="subtext">这是一段补充说明文字，与背景同色系。</p>
     </header>
 
     <div class="container">
@@ -101,6 +110,7 @@
                 <p>豆瓣短评评分分布</p>
                 <img src="images/词云图1.jpg" alt="好东西词云图" class="wordcloud-image">
                 <p>豆瓣短评词云图</p>
+                <p class="subtext">这是词云图的补充说明文字。</p>
             </div>
         </div>
 
