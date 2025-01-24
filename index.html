@@ -1,161 +1,191 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2024女性主义电影短评</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>2024年中国女性导演电影</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f5f5f5;
+            background-color: #ffece6; /* 特别浅的背景颜色 */
             color: #333;
         }
+
         header {
-            background-color: #6200ea;
-            color: white;
             text-align: center;
-            padding: 20px;
-            font-size: 24px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 60px 20px; /* 增加间距 */
+            background-color: #ffece6; /* 改为与背景一致 */
         }
+
+        header h1 {
+            margin: 0;
+            font-family: "Brush Script MT", cursive, sans-serif; /* 花字字体 */
+            font-size: 2.5em;
+            color: #ff6f61;
+            letter-spacing: 2px;
+        }
+
         .container {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 20px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .movie {
             display: flex;
-            align-items: center;
-            margin-bottom: 20px;
+            justify-content: space-around;
+            align-items: flex-start;
+            padding: 60px 20px;
         }
-        .movie img {
-            width: 150px;
-            height: auto;
-            border-radius: 8px;
-            margin-right: 20px;
-        }
-        .movie-info {
-            flex: 1;
-        }
-        .movie-info h2 {
-            margin: 0 0 10px;
-            font-size: 20px;
-            color: #6200ea;
-        }
-        .comments {
-            margin-top: 20px;
-        }
-        .comment {
-            border-bottom: 1px solid #ddd;
-            padding: 10px 0;
-        }
-        .comment:last-child {
-            border-bottom: none;
-        }
-        .username {
-            font-weight: bold;
-            color: #6200ea;
-        }
-        .rating {
-            color: #f39c12;
-        }
-        .useful {
-            margin-left: 10px;
-            color: #27ae60;
-        }
-        footer {
+
+        .movie {
             text-align: center;
-            padding: 10px;
-            background-color: #6200ea;
-            color: white;
-            margin-top: 20px;
+            width: 30%;
+        }
+
+        .movie img.poster {
+            width: 200px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            margin-bottom: 50px; /* 增大海报和电影名称间距 */
+        }
+
+        .movie img.director {
+            width: 100px;
+            height: auto;
+            border-radius: 50%;
+            margin-bottom: 60px; /* 增大图片和导演名称间距 */
+        }
+
+        .movie h3 {
+            margin: 30px 0 20px;
+            font-size: 1.2em;
+            cursor: pointer;
+        }
+
+        .movie p {
+            cursor: pointer;
+            margin-top: 20px; /* 增大导演姓名上方间距 */
+            margin-bottom: 40px;
+        }
+
+        .chart-container {
+            margin-top: 50px;
+        }
+
+        .chart-container p {
+            margin-top: 40px;
+            margin-bottom: 50px; /* 增大饼状图名称和条形图之间间距 */
+            font-weight: bold;
+        }
+
+        canvas {
+            max-width: 100%;
+            margin-bottom: 60px; /* 增大条形图与词云图之间的间距 */
+        }
+
+        .wordcloud-image {
+            width: 100%;
+            height: auto;
+            margin-top: 40px;
+            margin-bottom: 30px;
         }
     </style>
 </head>
 <body>
-    <header>2024 女性主义电影短评展示</header>
+    <header>
+        <h1>2024年中国女性导演电影</h1>
+    </header>
+
     <div class="container">
-        <!-- 示例电影1 -->
         <div class="movie">
-            <img src="movie1_poster.jpg" alt="电影海报">
-            <div class="movie-info">
-                <h2>电影名称1</h2>
-                <p>导演：女导演1</p>
-                <p>简介：这是一部讲述女性力量与成长的感人电影。</p>
-            </div>
-        </div>
-        <div class="comments">
-            <h3>短评</h3>
-            <div class="comment">
-                <span class="username">用户1</span>：
-                <span class="rating">⭐⭐⭐⭐⭐</span>
-                <p>非常触动人心的电影，细节刻画很到位！</p>
-                <span class="useful">有用：123</span>
-            </div>
-            <div class="comment">
-                <span class="username">用户2</span>：
-                <span class="rating">⭐⭐⭐⭐</span>
-                <p>情节非常真实，引发了很多共鸣。</p>
-                <span class="useful">有用：98</span>
+            <img src="images/hao_dongxi_poster.jpg" alt="好东西" class="poster">
+            <h3 onclick="showInfo('movie', '好东西', '这是一部讲述友情与成长的电影。')">好东西</h3>
+            <img src="images/director_hao.jpg" alt="导演" class="director">
+            <p onclick="showInfo('director', '张三', '张三是一位充满才华的导演，擅长刻画细腻的人物情感。')">导演姓名：张三</p>
+
+            <div class="chart-container">
+                <canvas id="piechart-hao"></canvas>
+                <p>豆瓣短评评分分布</p>
+                <canvas id="barchart-hao"></canvas>
+                <p>高频词条形图</p>
+                <img src="images/wordcloud_hao.jpg" alt="好东西词云图" class="wordcloud-image">
+                <p>豆瓣短评词云图</p>
             </div>
         </div>
 
-        <!-- 示例电影2 -->
         <div class="movie">
-            <img src="movie2_poster.jpg" alt="电影海报">
-            <div class="movie-info">
-                <h2>电影名称2</h2>
-                <p>导演：女导演2</p>
-                <p>简介：一部探索女性独立与社会期望的深刻电影。</p>
-            </div>
-        </div>
-        <div class="comments">
-            <h3>短评</h3>
-            <div class="comment">
-                <span class="username">用户3</span>：
-                <span class="rating">⭐⭐⭐⭐⭐</span>
-                <p>非常感人的故事，每一帧都充满力量！</p>
-                <span class="useful">有用：150</span>
-            </div>
-            <div class="comment">
-                <span class="username">用户4</span>：
-                <span class="rating">⭐⭐⭐⭐</span>
-                <p>画面和配乐都非常棒，很喜欢！</p>
-                <span class="useful">有用：80</span>
+            <img src="images/chuzou_juexin_poster.jpg" alt="出走的决心" class="poster">
+            <h3 onclick="showInfo('movie', '出走的决心', '这是一部关于追求自由与自我探索的电影。')">出走的决心</h3>
+            <img src="images/director_chuzou.jpg" alt="导演" class="director">
+            <p onclick="showInfo('director', '李四', '李四以其独特的叙事风格和视觉语言而闻名。')">导演姓名：李四</p>
+
+            <div class="chart-container">
+                <canvas id="piechart-chuzou"></canvas>
+                <p>豆瓣短评评分分布</p>
+                <canvas id="barchart-chuzou"></canvas>
+                <p>高频词条形图</p>
+                <img src="images/wordcloud_chuzou.jpg" alt="出走的决心词云图" class="wordcloud-image">
+                <p>豆瓣短评词云图</p>
             </div>
         </div>
 
-        <!-- 示例电影3 -->
         <div class="movie">
-            <img src="movie3_poster.jpg" alt="电影海报">
-            <div class="movie-info">
-                <h2>电影名称3</h2>
-                <p>导演：女导演3</p>
-                <p>简介：一部讲述女性勇气和团结的震撼之作。</p>
-            </div>
-        </div>
-        <div class="comments">
-            <h3>短评</h3>
-            <div class="comment">
-                <span class="username">用户5</span>：
-                <span class="rating">⭐⭐⭐⭐⭐</span>
-                <p>影片充满张力，让人久久难以忘怀！</p>
-                <span class="useful">有用：200</span>
-            </div>
-            <div class="comment">
-                <span class="username">用户6</span>：
-                <span class="rating">⭐⭐⭐⭐</span>
-                <p>故事情节引人入胜，非常精彩！</p>
-                <span class="useful">有用：90</span>
+            <img src="images/rela_guntang_poster.jpg" alt="热辣滚烫" class="poster">
+            <h3 onclick="showInfo('movie', '热辣滚烫', '这是一部充满激情和活力的电影，展现了现代女性的生活与梦想。')">热辣滚烫</h3>
+            <img src="images/director_rela.jpg" alt="导演" class="director">
+            <p onclick="showInfo('director', '王五', '王五专注于通过电影表达女性视角，作品多次获奖。')">导演姓名：王五</p>
+
+            <div class="chart-container">
+                <canvas id="piechart-rela"></canvas>
+                <p>豆瓣短评评分分布</p>
+                <canvas id="barchart-rela"></canvas>
+                <p>高频词条形图</p>
+                <img src="images/wordcloud_rela.jpg" alt="热辣滚烫词云图" class="wordcloud-image">
+                <p>豆瓣短评词云图</p>
             </div>
         </div>
     </div>
-    <footer>© 2024 女性主义电影短评展示</footer>
-</body>
-</html>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        function generatePieChart(ctx, data) {
+            new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['力荐', '推荐', '还行', '较差', '很差'],
+                    datasets: [{
+                        data: data,
+                        backgroundColor: ['#ff6f61', '#f4a261', '#f7d794', '#82c4c3', '#d3d3d3']
+                    }]
+                }
+            });
+        }
+
+        function generateBarChart(ctx, labels, data) {
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: '词频',
+                        data: data,
+                        backgroundColor: '#ff6f61'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+
+        // Data for each movie
+        const dataHao = [50, 30, 10, 5, 5];
+        const dataChuzou = [40, 35, 15, 5, 5];
+        const dataRela = [45, 25, 15, 10, 5];
+
+        const barLabels = ['关键词1', '关键词2', '关键词3', '关键词4', '关键词5', '关键词6', '关键词7', '关键词8', '关键词9', '关键词10'];
+        const barDataHao = [12, 9, 8, 7, 6, 5, 5, 4, 3, 2];
+        const barDataChuzou = [15, 12, 10, 8, 7, 6, 5, 4, 3, 
